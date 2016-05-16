@@ -1,0 +1,9 @@
+one:
+  title: "my poll"
+
+start:
+  title: "best poll"
+
+empty_answers:
+  title: "cool poll"
+  answers: []

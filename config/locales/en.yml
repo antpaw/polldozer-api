@@ -1,0 +1,16 @@
+en:
+  mongoid:
+    errors:
+      models:
+        poll:
+          attributes:
+            ip_adresses:
+              has_voted: 'has voted'
+            valid_until:
+              must_be_future: 'has to be in the future'
+              no_too_far_in_future: 'can not to be too far in the future'
+            answer_id:
+              not_found: 'answer not found'
+
+  poll:
+    page_title: 'Poll: %{title}'

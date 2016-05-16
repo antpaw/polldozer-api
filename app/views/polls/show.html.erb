@@ -1,0 +1,22 @@
+<% title = @poll.title %>
+<% description = @poll.description %>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= t('poll.page_title', title: title) %></title>
+  <meta property="og:title" content="<%= title %>">
+  <meta name="twitter:title" content="<%= title %>">
+  <meta name="description" content="<%= description %>">
+  <meta property="og:description" content="<%= description %>">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div id="vote" data-poll-id="<%= @poll.id %>"></div>
+  <script>
+    window.pollData = <%= render(partial: 'polls/show.json.jbuilder').html_safe %>;
+  </script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'polls', 'data-turbolinks-track' => true %>
+</body>
+</html>

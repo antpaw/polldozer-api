@@ -1,0 +1,87 @@
+de:
+  datetime:
+    distance_in_words:
+      half_a_minute: "vor halber Minute"
+      less_than_x_seconds:
+        one:   "vor 1 Sekunde"
+        other: "vor %{count} Sekunden"
+      x_seconds:
+        one:   "1 Sekunde"
+        other: "%{count} Sekunde"
+      less_than_x_minutes:
+        one:   "vor einer Minute"
+        other: "vor %{count} Minuten"
+      x_minutes:
+        one:   "1 Minute"
+        other: "%{count} Minuten"
+      about_x_hours:
+        one:   "vor einer Stunde"
+        other: "vor %{count} Stunden"
+      x_days:
+        one:   "1 Tag"
+        other: "%{count} Tage"
+      about_x_days:
+        one:   "gestern"
+        other: "vor %{count} Tagen"
+      about_x_months:
+        one:   "vor einem Monat"
+        other: "vor %{count} Monaten"
+      x_months:
+        one:   "1 Monat"
+        other: "%{count} Monate"
+      about_x_years:
+        one:   "vor einem Jahr"
+        other: "vor %{count} Jahren"
+      over_x_years:
+        one:   "über ein Jahr"
+        other: "über %{count} Jahren"
+      almost_x_years:
+        one:   "fast ein Jahr"
+        other: "fast %{count} Jahren"
+  time:
+    formats:
+      default: "%A %d.%m. %H:%M Uhr"
+      short: "%e. %b %H:%M"
+      midi: "%A %d.%m. %H:%M Uhr"
+      long: "%e. %B %Y %H:%M Uhr"
+
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "ist kein gültiger Wert"
+        exclusion: "ist nicht verfügbar"
+        invalid: "ist nicht gültig"
+        confirmation: "stimmt nicht mit der Bestätigung überein"
+        accepted: "muss akzeptiert werden"
+        empty: "muss ausgefüllt werden"
+        blank: "muss ausgefüllt werden"
+        too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
+        too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
+        wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
+        taken: "ist bereits vergeben"
+        not_a_number: "ist keine Zahl"
+        greater_than: "muss größer als %{count} sein"
+        greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
+        equal_to: "muss genau %{count} sein"
+        less_than: "muss kleiner als %{count} sein"
+        less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
+        odd: "muss ungerade sein"
+        even: "muss gerade sein"
+        not_an_integer: "die Zahl muss ohne das Komma eingegeben werden"
+        duplicate_entry: Doppelter Eintrag
+  mongoid:
+    errors:
+      models:
+        poll:
+          attributes:
+            ip_adresses:
+              has_voted: 'bereits gewählt'
+            valid_until:
+              must_be_future: 'muss in der zukunft liegen'
+              no_too_far_in_future: 'can not to be too far in the future'
+            answer_id:
+              not_found: 'answer not found'
+
+  poll:
+    page_title: 'Umfrage: %{title}'
