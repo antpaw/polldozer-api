@@ -1,4 +1,5 @@
-//= require lib/Create.js
+var $ = require('jquery');
+var PollCreate = require('polldozer/create');
 
 var corsRequestFn = function(options) {
   var ajax = function(url, type, data) {
@@ -6,9 +7,9 @@ var corsRequestFn = function(options) {
       url: url,
       type: type,
       crossDomain: true,
-      contentType: data ? 'application/json; charset=utf-8' : void 0,
+      contentType: data ? 'application/json; charset=utf-8' : undefined,
       dataType: 'json',
-      data: data ? JSON.stringify(data) : void 0,
+      data: data ? JSON.stringify(data) : undefined,
       success: options.onSuccess,
       error: options.onFailure,
       complete: options.onComplete
@@ -24,8 +25,11 @@ var corsRequestFn = function(options) {
   };
 };
 
-new Polldozer.Create({
+new PollCreate({
   element: document.getElementById('vote'),
-  apiUrl: 'http://localhost:3000/',
-  corsRequestFn: corsRequestFn
+  apiUrl: '/',
+  corsRequestFn: corsRequestFn,
+  onCreate: function(poll){
+    window.location = '/polls/' + poll._id;
+  }
 });

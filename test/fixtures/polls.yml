@@ -7,3 +7,7 @@ start:
 empty_answers:
   title: "cool poll"
   answers: []
+
+finished:
+  title: "finished poll"
+  valid_until: "2015-02-02 08:20"

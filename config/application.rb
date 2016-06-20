@@ -22,12 +22,21 @@ module Polldozer
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.fallbacks = [:en]
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => %w{GET POST PUT PATCH DELETE OPTIONS}.join(',')
-    }
+
+    # This handles cross-origin resource sharing.
+    # See: https://github.com/cyu/rack-cors
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        # In development, we don't care about the origin.
+        origins '*'
+        # Reminder: On the following line, the 'methods' refer to the 'Access-
+        # Control-Request-Method', not the normal Request Method.
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put, :patch], credentials: true
+      end
+    end
   end
 end

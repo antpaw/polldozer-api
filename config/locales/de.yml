@@ -75,7 +75,7 @@ de:
       models:
         poll:
           attributes:
-            ip_adresses:
+            base:
               has_voted: 'bereits gewählt'
             valid_until:
               must_be_future: 'muss in der zukunft liegen'

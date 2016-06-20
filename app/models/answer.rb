@@ -13,17 +13,17 @@ class Answer
     update_attribute(:vote_count, vote_count + 1)
   end
 
-  def set_percent_total_from_sum(sum)
-    @percent_total = if sum > 0 && vote_count > 0
+  def set_percent_from_sum(sum)
+    @percent = if sum > 0 && vote_count > 0
       vote_count.to_f / (sum.to_f / 100.0)
     else
       0.0
     end.round
-    @percent_total
+    @percent
   end
 
-  def percent_total
-    @percent_total
+  def percent
+    @percent
   end
 
   def winner
@@ -36,5 +36,17 @@ class Answer
 
   def set_as_loser
     @winner = false
+  end
+
+  def users_vote
+    @users_vote
+  end
+
+  def set_users_vote_yes
+    @users_vote = true
+  end
+
+  def set_users_vote_no
+    @users_vote = false
   end
 end

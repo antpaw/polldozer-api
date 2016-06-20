@@ -1,0 +1,32 @@
+vote1:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"
+vote2:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"
+vote3:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"
+vote4:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "4"
+vote5:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "5"
+vote6:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"
+vote7:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"
+vote8:
+  ip_address: "126.0.0.1"
+  answer_id: "2"
+  poll_id: "1"

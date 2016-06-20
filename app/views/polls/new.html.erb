@@ -7,7 +7,9 @@
 </head>
 <body>
   <div id="vote" data-poll-id="573a3d2ed1bd031a0f000000"></div>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'polls_create', 'data-turbolinks-track' => true %>
+  <% if ! Rails.env.test? %>
+    <%= javascript_include_tag *webpack_asset_paths('poll_create') %>
+  <% end %>
+</body>
 </body>
 </html>

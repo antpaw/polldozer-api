@@ -4,7 +4,7 @@ en:
       models:
         poll:
           attributes:
-            ip_adresses:
+            base:
               has_voted: 'has voted'
             valid_until:
               must_be_future: 'has to be in the future'

@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 .byebug_history
+/node_modules
+/public/webpack
+npm-debug.log

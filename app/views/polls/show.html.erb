@@ -16,7 +16,8 @@
   <script>
     window.pollData = <%= render(partial: 'polls/show.json.jbuilder').html_safe %>;
   </script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'polls', 'data-turbolinks-track' => true %>
+  <% if ! Rails.env.test? %>
+    <%= javascript_include_tag *webpack_asset_paths('poll_vote') %>
+  <% end %>
 </body>
 </html>

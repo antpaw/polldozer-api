@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+
+@import '../../../node_modules/polldozer/stylesheets/create.scss';
+@import '../../../node_modules/polldozer/stylesheets/vote.scss';

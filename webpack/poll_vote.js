@@ -1,4 +1,6 @@
-//= require lib/Vote.js
+var $ = require('jquery');
+var PollVote = require('polldozer/vote');
+var Cookies = require('js-cookie');
 
 var corsRequestFn = function(options) {
   var ajax = function(url, type, data) {
@@ -6,9 +8,9 @@ var corsRequestFn = function(options) {
       url: url,
       type: type,
       crossDomain: true,
-      contentType: data ? 'application/json; charset=utf-8' : void 0,
+      contentType: data ? 'application/json; charset=utf-8' : undefined,
       dataType: 'json',
-      data: data ? JSON.stringify(data) : void 0,
+      data: data ? JSON.stringify(data) : undefined,
       success: options.onSuccess,
       error: options.onFailure,
       complete: options.onComplete
@@ -24,9 +26,12 @@ var corsRequestFn = function(options) {
   };
 };
 
-new Polldozer.Vote({
+new PollVote({
   element: document.getElementById('vote'),
-  apiUrl: 'http://localhost:3000/',
+  apiUrl: '/',
   corsRequestFn: corsRequestFn,
+  onVote: function(poll) {
+    Cookies.set('poll_' + poll._id, poll.vote_id, {expires: new Date(2147483647000)});
+  },
   pollData: window.pollData
 });

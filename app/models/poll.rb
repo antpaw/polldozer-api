@@ -5,7 +5,6 @@ class Poll
   field :title, type: String
   field :token, type: Array
   field :valid_until, type: DateTime, default: -> { 1.day.from_now }
-  field :ip_adresses, type: Array, default: []
   embeds_many :answers
 
   validates :title, presence: true
@@ -13,7 +12,7 @@ class Poll
   validate :valid_until_check, on: :create
 
   def valid_until_check
-    if valid_until < 5.minutes.from_now
+    if valid_until < 4.minutes.from_now
       errors.add(:valid_until, :must_be_future)
     end
     if valid_until > 10.days.from_now
@@ -30,9 +29,9 @@ class Poll
     output.join(', ')
   end
 
-  def vote_answer(answer_id, ip_adress)
-    if has_voted?(ip_adress)
-      errors.add(:ip_adresses, :has_voted)
+  def vote_answer(answer_id, has_voted)
+    if has_voted
+      errors.add(:base, :has_voted)
       return false
     end
     unless answer = answers.find(answer_id)
@@ -40,8 +39,7 @@ class Poll
       return false
     end
     answer.vote
-    self.ip_adresses << ip_adress
-    self.save
+    answer
   end
 
   def total_votes_count
@@ -61,8 +59,8 @@ class Poll
     self.valid_until = date
   end
 
-  def set_ip_has_voted(ip_adress)
-    @ip_has_voted = has_voted?(ip_adress)
+  def set_ip_has_voted(boolean)
+    @ip_has_voted = boolean
   end
 
   def ip_has_voted
@@ -72,7 +70,7 @@ class Poll
   def set_answers_percent
     sum = total_votes_count
     answers.each do |answer|
-      answer.set_percent_total_from_sum(sum)
+      answer.set_percent_from_sum(sum)
     end
   end
 
@@ -86,6 +84,14 @@ class Poll
     end
   end
 
+  def set_users_vote_for_answer(answer_id)
+    answers.each(&:set_users_vote_no)
+    selected_answer = answers.bsearch { |answer| answer.id == answer_id }
+    if selected_answer
+      selected_answer.set_users_vote_yes()
+    end
+  end
+
   def set_answers(answer_titles)
     answer_titles.each do |answer_title|
       self.answers << Answer.new(title: answer_title)
@@ -94,10 +100,6 @@ class Poll
 
   def has_token?(param_token)
     false #self.contains(:token, param_token)
-  end
-
-  def has_voted?(ip_adress)
-    ip_adress.blank? || ip_adresses.include?(ip_adress)
   end
 
 end

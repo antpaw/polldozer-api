@@ -1,17 +1,17 @@
 development:
-  sessions:
+  clients:
     default:
       database: polldozer
       hosts:
         - localhost:27017
 
 production:
-  sessions:
+  clients:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      uri: <%= ENV['MONGODB_URI'] %>
 
 test:
-  sessions:
+  clients:
     default:
       database: polldozer_test
       hosts:
