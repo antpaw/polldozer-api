@@ -24,6 +24,7 @@ class PollsControllerTest < ActionController::TestCase
     assert_equal @poll.id.to_s, json['_id']
     assert_equal false, json['finished']
     assert_equal false, json['ip_has_voted']
+    assert_equal Time.now.utc.to_date, Time.at(json['created_at']).utc.to_date
     assert_equal 0, json['total_votes_count']
   end
 

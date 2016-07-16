@@ -11,6 +11,7 @@ Rails project to create and vote on polls. Checkout [Polldozer](https://github.c
   "_id": "5766786ae4bf660003f87a86",
   "title": "Kittens",
   "valid_until": 1466419690,
+  "created_at": 1466409690,
   "finished": true,
   "total_votes_count": 0,
   "ip_has_voted": false,
